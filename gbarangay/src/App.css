@@ -1,0 +1,262 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: #222;
+}
+
+/* Global typography */
+body, html, #root { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#102027 }
+
+
+.App-link {
+  color: #61dafb;
+}
+
+/* GBarangay custom styles (inspired by GCash) */
+.topbar {
+  background: linear-gradient(90deg,#0b67d0 0%, #1f95ff 100%);
+  color: white;
+  padding: 18px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.app-container{
+  max-width:1000px;
+  margin: 16px auto;
+  padding: 0 12px 48px;
+}
+
+/* Dashboard header with logo and title (imitate attached banner) */
+.dashboard-header{ display:flex; align-items:center; gap:12px; margin-bottom:8px }
+.dashboard-logo{ width:56px; height:56px; flex:0 0 56px; border-radius:50%; box-shadow:0 6px 18px rgba(11,103,208,0.12); border:4px solid rgba(15,120,240,0.08); background:white }
+.dashboard-title .brand{ font-size:18px; font-weight:900; color:var(--primary); letter-spacing:0.6px }
+.dashboard-title .tagline{ font-size:13px; color:#0f2940; opacity:0.9; margin-top:2px }
+
+/* Phone frame (portrait) to simulate mobile app */
+.phone-frame-wrap{ display:flex; align-items:center; justify-content:center; padding:18px; background:#f2f4f7; min-height:100vh }
+.phone-frame{ width:390px; max-width:96%; height:844px; background:#fff; border-radius:28px; box-shadow:0 20px 60px rgba(0,0,0,0.15); overflow:auto; border:1px solid #e9eef6 }
+.phone-inner{ display:block }
+.phone-frame{ position:relative }
+
+/* New scrollable area inside the phone frame so bottom nav can stay fixed */
+.phone-inner{ display:flex; flex-direction:column; height:100% }
+.phone-scroll{ flex:1 1 auto; overflow:auto; -webkit-overflow-scrolling:touch; padding-bottom:8px }
+.phone-frame .app-container{ max-width:360px; margin:12px auto; padding:12px; padding-bottom:160px /* space for bottom nav and chat */ }
+
+/* compact topbar for phone */
+.topbar{ padding:12px 14px; border-radius:12px 12px 0 0 }
+.topbar .logo{ display:flex; align-items:center; gap:10px; font-weight:800; font-size:18px }
+.topbar-logo{ width:44px; height:44px; border-radius:50%; box-shadow:0 6px 18px rgba(11,103,208,0.12); border:3px solid rgba(255,255,255,0.18); background:white; display:block; object-fit:cover }
+.topbar-brand{ display:flex; flex-direction:column; line-height:1 }
+.topbar .logo-text{ color:white; font-weight:900; letter-spacing:0.6px; font-size:16px }
+.topbar-tagline{ font-size:12px; color:rgba(255,255,255,0.95); font-weight:600; opacity:0.95; margin-top:2px }
+.topbar .right{ font-size:13px; opacity:0.95 }
+.wallet-card{
+  background: linear-gradient(90deg,#0b67d0,#1f95ff);
+  color: white;
+  border-radius:12px;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.wallet-left{
+  text-align:left;
+}
+.wallet-balance{
+  font-size:28px;
+  font-weight:700;
+  margin:4px 0;
+}
+.wallet-actions{ display:flex; gap:8px; margin-top:8px }
+.action-btn{ background: rgba(255,255,255,0.12); padding:8px 12px; border-radius:10px; color:white; font-weight:600 }
+.quick-actions{ display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-top:16px }
+.quick-action{ background:white; border-radius:10px; padding:12px; box-shadow:0 1px 4px rgba(0,0,0,0.06); text-align:center }
+.quick-action .icon{ font-size:20px; color:#0b67d0 }
+.section{ margin-top:20px }
+.announcements{ background:#fff; border-radius:10px; padding:12px; box-shadow:0 1px 4px rgba(0,0,0,0.06) }
+.requests-list{ margin-top:10px }
+.request-item{ display:flex; align-items:center; justify-content:space-between; padding:12px 10px; border-radius:10px; background:linear-gradient(180deg,#ffffff,#fbfdff); box-shadow:0 4px 14px rgba(15,90,180,0.04); margin-bottom:10px }
+.request-item:hover{ transform:translateY(-2px); box-shadow:0 12px 30px rgba(15,90,180,0.06) }
+.badge{ padding:6px 8px; border-radius:12px; font-weight:600; font-size:12px }
+.badge.pending{ background:#fff4e6; color:#b36b00 }
+.badge.processing{ background:#e6f4ff; color:#0b67d0 }
+.badge.ready{ background:#e6fff2; color:#067a3a }
+.badge.completed{ background:#efefef; color:#666 }
+
+@media (max-width:640px){
+  .quick-actions{ grid-template-columns: repeat(3,1fr) }
+}
+
+/* Forms and admin */
+.form-card{ background:#fff; padding:16px; border-radius:14px; box-shadow:0 6px 28px rgba(16,32,40,0.04); max-width:720px; margin-top:14px }
+.form-row{ display:flex; gap:12px; margin-bottom:12px }
+.form-row{ flex-wrap:wrap }
+.form-row input[type="text"], .form-row input[type="number"], .form-row select, textarea,
+.form-row input, .form-row textarea { flex:1; padding:12px 14px; border-radius:12px; border:1px solid #e6eef9; background:#fbfdff; box-shadow:inset 0 1px 0 rgba(255,255,255,0.6); font-size:14px }
+
+/* Ensure inputs without explicit type (name/contact) get same styling */
+.form-row input{ min-height:44px }
+.form-row input::placeholder, .form-row select::placeholder, textarea::placeholder{ color:#9aa3b2 }
+.form-row label{ font-weight:700 }
+.file-list{ margin-top:8px }
+.file-item{ padding:6px 8px; border-radius:8px; background:#fafafa; border:1px solid #f0f0f0; margin-bottom:6px }
+
+/* Button & input polish */
+:root{
+  --primary:#0b67d0;
+  --primary-600:#0a57b8;
+  --accent:#1f95ff;
+  --muted:#6b7280;
+  --surface:#ffffff;
+}
+
+button{ font-family:inherit; cursor:pointer; border:none; transition:all .15s ease; }
+
+/* Primary button */
+.btn, button[type="submit"]{ background: linear-gradient(90deg,var(--primary),var(--accent)); color:white; padding:10px 14px; border-radius:10px; box-shadow:0 8px 20px rgba(11,103,208,0.18); font-weight:700 }
+.btn[disabled], button[disabled]{ opacity:0.6; transform:none; box-shadow:none; cursor:default }
+.btn:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(11,103,208,0.22) }
+
+/* Secondary / outline */
+.btn-outline{ background:transparent; border:1px solid #e6eef9; color:var(--primary); padding:8px 12px; border-radius:10px }
+.btn-outline:hover{ background:#f6fbff }
+
+/* Small buttons used in lists */
+button.small{ padding:6px 10px; border-radius:8px; font-weight:600 }
+
+/* Focus & accessibility */
+input:focus, select:focus, textarea:focus, button:focus{ outline:3px solid rgba(15,120,240,0.12); outline-offset:2px }
+
+/* File input alignment */
+input[type="file"]{ padding:6px 0 }
+
+/* Make action buttons inside wallet/card use btn styles */
+.action-btn{ background:rgba(255,255,255,0.14); padding:8px 12px; border-radius:10px; color:white; font-weight:700 }
+.action-btn:hover{ background:rgba(255,255,255,0.18) }
+
+/* Styled file chooser */
+.file-input-wrapper{ display:flex; gap:12px; align-items:center; flex-wrap:wrap }
+.file-chooser-btn{ display:inline-flex; align-items:center; gap:8px }
+.file-names{ display:flex; flex-direction:column; gap:6px; min-width:120px }
+.file-placeholder{ color:var(--muted); font-size:13px }
+.file-item{ padding:6px 8px; border-radius:8px; background:#f6fbff; border:1px solid #e6f3ff; color:#063b6b }
+
+/* Make file chooser visually like a button on small screens */
+@media (max-width:420px){
+  .file-input-wrapper{ width:100% }
+  .file-chooser-btn{ flex:0 0 auto }
+  .file-names{ flex:1 1 auto }
+}
+
+.admin-table{ width:100%; border-collapse:collapse; margin-top:8px }
+.admin-table th, .admin-table td{ text-align:left; padding:12px 10px; border-bottom:1px solid #f3f3f3; vertical-align:middle }
+.admin-table{ border-radius:12px; overflow:hidden; box-shadow:0 6px 22px rgba(10,30,60,0.04); border:1px solid #f0f4f9 }
+.admin-table thead tr{ background:linear-gradient(90deg,#fcfdff,#fafcff) }
+.admin-table tbody tr:nth-child(even){ background: linear-gradient(180deg,#ffffff,#fbfeff) }
+.admin-table tbody tr:hover{ background:linear-gradient(90deg,#f5fbff,#ffffff); transform:translateY(-1px) }
+.admin-actions button{ margin-right:8px }
+
+/* Responsive admin table wrapper */
+.admin-table-wrap{ overflow:auto; -webkit-overflow-scrolling:touch; width:100%; }
+.admin-table thead th{ background:#fbfbfc; position:sticky; top:0; z-index:2 }
+.admin-table th, .admin-table td{ font-size:13px }
+.admin-table td{ vertical-align:middle }
+
+@media (max-width:420px){
+  .admin-table th, .admin-table td{ font-size:12px; padding:8px }
+  .admin-actions button.small{ padding:6px 8px; font-size:12px }
+  .admin-table thead th{ display:table-cell }
+}
+
+/* Form responsiveness: stack inputs and make actions full-width on small screens */
+@media (max-width:520px){
+  .form-row{ gap:10px }
+  .form-row input[type="text"], .form-row input[type="number"], .form-row select, .form-row input, .form-row textarea{ flex-basis:100%; width:100% }
+  .form-row select{ -webkit-appearance:none; appearance:none; }
+  .form-actions{ display:flex; flex-direction:column; gap:10px }
+  .form-actions .btn, .form-actions .btn-outline{ width:100%; display:block }
+}
+
+/* Make bottom nav less intrusive and clearly above content */
+.bottom-nav{ position:absolute; left:12px; right:12px; bottom:14px; display:flex; gap:6px; background:rgba(255,255,255,0.95); padding:10px 6px; justify-content:space-between; box-shadow:0 12px 30px rgba(6,40,80,0.06); border-radius:12px }
+.bottom-nav-item{ background:linear-gradient(180deg, #ffffff, #fbfdff); }
+
+/* Hide desktop button row on small screens, show overflow menu */
+.admin-actions-inline .desktop-actions{ display:flex; gap:6px }
+.admin-actions-inline .mobile-actions{ display:none }
+
+@media (max-width:560px){
+  .admin-actions-inline .desktop-actions{ display:none }
+  .admin-actions-inline .mobile-actions{ display:block }
+}
+
+/* Pay button variant (green) */
+.btn-pay{ background: linear-gradient(90deg,#0db04b,#00c853); box-shadow:0 10px 26px rgba(0,200,100,0.12) }
+
+/* ensure links styled as outline buttons look right */
+a.btn-outline{ display:inline-block; padding:8px 12px; color:var(--primary); border-radius:10px }
+
+/* small helper for slim table buttons */
+.small{ padding:6px 8px; font-size:13px }
+
+/* slightly reduce request-list font sizing to improve fit */
+.requests-list{ font-size:14px }
+.requests-list{ padding-right:6px }
+
+/* Make sure recent requests scroll area isn't overlapped by floating UI */
+.announcements.requests-list{ padding-bottom:6px }
+
+/* Ensure floating elements don't cover content: set z-index appropriately */
+.bottom-nav{ z-index:60 }
+.chat-button{ z-index:70 }
+
+/* kiosk styles removed (kiosk page deleted) */
+
+/* Bottom navigation */
+.bottom-nav{ position:absolute; left:12px; right:12px; bottom:14px; display:flex; gap:6px; background:transparent; padding:10px 6px; justify-content:space-between }
+.bottom-nav-item{ flex:1; text-align:center; padding:8px 6px; border-radius:12px; color:#374151; text-decoration:none; font-size:12px; background:linear-gradient(180deg, #ffffff, #fafafa); box-shadow:0 6px 16px rgba(0,0,0,0.06) }
+.bottom-nav-item div{ margin-top:6px }
+
+/* Chatbot */
+.chat-button{ position:absolute; right:22px; bottom:110px; background:#0b67d0; color:white; border-radius:50%; width:52px; height:52px; border:none; font-size:20px; box-shadow:0 6px 18px rgba(11,103,208,0.28); z-index:90 }
+.chat-panel{ position:absolute; right:16px; bottom:180px; width:320px; max-width:86%; background:white; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.18); overflow:hidden; display:flex; flex-direction:column; z-index:92 }
+.chat-header{ padding:10px 12px; background:linear-gradient(90deg,#0b67d0,#1f95ff); color:white; font-weight:700; display:flex; justify-content:space-between; align-items:center }
+.chat-close{ background:transparent; border:none; color:white; font-size:16px }
+.chat-body{ padding:12px; max-height:260px; overflow:auto; display:flex; flex-direction:column; gap:8px }
+.chat-msg{ padding:8px 10px; border-radius:10px; max-width:85% }
+.chat-msg.bot{ background:#f3f7ff; align-self:flex-start }
+.chat-msg.you{ background:#e9f7ee; align-self:flex-end }
+.chat-input{ display:flex; gap:8px; padding:10px; border-top:1px solid #f0f0f0 }
+.chat-input input{ flex:1; padding:8px; border-radius:8px; border:1px solid #eee }
+.chat-input button{ background:#0b67d0; color:white; border:none; padding:8px 12px; border-radius:8px }
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
