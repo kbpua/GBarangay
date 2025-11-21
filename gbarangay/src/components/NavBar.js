@@ -5,7 +5,11 @@ export default function NavBar(){
   return (
     <header className="topbar">
       <div className="logo">
-        <img src="/images/gbarangay-logo.png" alt="GBarangay" className="topbar-logo" />
+        <img
+          src={`${process.env.PUBLIC_URL}/images/gbarangay-logo.png`}
+          alt="GBarangay"
+          className="topbar-logo"
+        />
         <div className="topbar-brand">
           <div className="logo-text">GBarangay</div>
           <div className="topbar-tagline">Your Government in Your Pocket.</div>

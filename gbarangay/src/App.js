@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Dashboard from './pages/Dashboard';
 import NewRequest from './pages/NewRequest';
@@ -10,7 +10,7 @@ import BottomNav from './components/BottomNav';
 
 function App(){
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="phone-frame-wrap">
         <div className="phone-frame">
           <div className="phone-inner">
@@ -27,7 +27,7 @@ function App(){
           </div>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
