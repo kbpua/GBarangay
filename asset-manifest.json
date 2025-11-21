@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/GBarangay/static/css/main.9588a0e0.css",
+    "main.js": "/GBarangay/static/js/main.abcb27c7.js",
+    "static/js/453.78ee8584.chunk.js": "/GBarangay/static/js/453.78ee8584.chunk.js",
+    "index.html": "/GBarangay/index.html",
+    "main.9588a0e0.css.map": "/GBarangay/static/css/main.9588a0e0.css.map",
+    "main.abcb27c7.js.map": "/GBarangay/static/js/main.abcb27c7.js.map",
+    "453.78ee8584.chunk.js.map": "/GBarangay/static/js/453.78ee8584.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9588a0e0.css",
+    "static/js/main.abcb27c7.js"
+  ]
+}
